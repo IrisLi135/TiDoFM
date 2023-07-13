@@ -9,13 +9,16 @@
 
 ## About
 
+
 TiDoFM (Time Domain Fisher Matrix Code):
 
-╚══ TiDoFM
-  ╠══ ASD: sensitivity curves
-  ╚══ antenna_pattern_class.py: calculate the antenna pattern
-  ╚══ fm_class.py: calculate the fisher matrix for input time domain signal
-  ╚══ snr_class.py: calculate the snr for input time domain signals
+╚══ TiDoFM  
+  >══ ./ASD: directory contains sensitivity curves  
+  >══ antenna_pattern_class.py: calculate the antenna pattern
+  >══ fm_class.py: calculate the fisher matrix for input time domain signal  
+  >══ snr_class.py: calculate the snr for input time domain signals  
+  >══ TiDoFM_tutorial.ipynb: tutorial of how to use TiDoFM
+
 
 ## Tutorial
 
