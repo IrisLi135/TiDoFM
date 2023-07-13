@@ -16,7 +16,7 @@ TiDoFM (Time Domain Fisher Matrix Code) includes three classes respectively in t
 - TiDoFM/snr_class.py: calculate the snr for input time domain signals
 ## Tutorial
 
-- An example tutorial of how to use TiDoFM is given in [**TiDoFM_tutorial.ipynb**](https://github.com/IrisLi135/TiDoFM/TiDoFM_tutorial.ipynb).
+- An example tutorial of how to use TiDoFM is given in [**TiDoFM_tutorial.ipynb**](https://github.com/IrisLi135/TiDoFM/blob/main/TiDoFM_tutorial.ipynb).
 
 - Please click [**https://irisli135.github.io/docs/**](https://irisli135.github.io/docs/) for detailed information of this package.
 
