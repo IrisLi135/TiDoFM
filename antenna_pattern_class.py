@@ -44,9 +44,9 @@ class AntennaPattern:
         self.Det = detector_params.get('Det', 'ET_1_10km_cryo')
         self.GPST = GPST
         self.detector_info = {
-            'ET_1_10km_cryo': np.array([40.31, 9.25, 243.0, 90.0]) * np.pi / 180,
-            'ET_2_10km_cryo': np.array([40.31, 9.25, 243.0, 90.0]) * np.pi / 180,
-            'ET_3_10km_cryo': np.array([40.31, 9.25, 243.0, 90.0]) * np.pi / 180,}
+            'ET_1_10km_cryo': np.array([43.63, 10.5, 115.27, 90.0]) * np.pi / 180,
+            'ET_2_10km_cryo': np.array([43.63, 10.5, 115.27, 90.0]) * np.pi / 180,
+            'ET_3_10km_cryo': np.array([43.63, 10.5, 115.27, 90.0]) * np.pi / 180,}
         if self.Det not in self.detector_info:
             raise ValueError("Invalid detector name.")
             

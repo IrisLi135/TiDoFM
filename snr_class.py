@@ -164,9 +164,9 @@ class SNRCalculator:
         :type x: str
         '''
         return {
-                'ET_1_10km_cryo': np.array([40.31, 9.25, 243.0, 90.0])*np.pi/180,
-                'ET_2_10km_cryo': np.array([40.31, 9.25, 243.0, 90.0])*np.pi/180,
-                'ET_3_10km_cryo': np.array([40.31, 9.25, 243.0, 90.0])*np.pi/180,
+                'ET_1_10km_cryo': np.array([43.63, 10.5, 115.27, 90.0])*np.pi/180,
+                'ET_2_10km_cryo': np.array([43.63, 10.5, 115.27, 90.0])*np.pi/180,
+                'ET_3_10km_cryo': np.array([43.63, 10.5, 115.27, 90.0])*np.pi/180,
             }[x]
 
     def readnos(self, f_points):
@@ -192,7 +192,7 @@ class SNRCalculator:
             data = np.loadtxt(f)
 
         f = np.log10(data[:, 0])
-        ASD = np.log10(data[:, 3] / nos_divider)
+        ASD = np.log10(data[:, 1] / nos_divider)
 
         nosextrapolate = interpolate.InterpolatedUnivariateSpline(f, ASD, k=1)
         nos = nosextrapolate(np.log10(f_points))
@@ -291,7 +291,7 @@ class SNRCalculator:
 
             ## read noise
             noise_psd = self.readnos(f_series)
-            PSD = noise_psd[f_start_index : f_end_index]
+            PSD = noise_psd[f_start_index : f_end_index]**2
 
             ## calculate the GPST of the segment and the antenna pattern
             GPST_piece = GPSTinitial + segment['start_time']

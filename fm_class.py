@@ -196,7 +196,7 @@ class FisherMatrix:
             data = np.loadtxt(f)
 
         f = np.log10(data[:, 0])
-        ASD = np.log10(data[:, 3] / nos_divider)
+        ASD = np.log10(data[:, 1] / nos_divider)
 
         nosextrapolate = interpolate.InterpolatedUnivariateSpline(f, ASD, k=1)
         nos = nosextrapolate(np.log10(f_points))
