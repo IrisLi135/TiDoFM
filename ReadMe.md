@@ -9,11 +9,14 @@
 
 ## About
 
-TiDoFM (Time Domain Fisher Matrix Code) includes three classes respectively in three files:
+TiDoFM (Time Domain Fisher Matrix Code):
 
-- TiDoFM/antenna_pattern_class.py: calculate the antenna pattern
-- TiDoFM/fm_class.py: calculate the fisher matrix for input time domain signals
-- TiDoFM/snr_class.py: calculate the snr for input time domain signals
+╚══ TiDoFM
+  ╠══ ASD: sensitivity curves
+  ╚══ antenna_pattern_class.py: calculate the antenna pattern
+  ╚══ fm_class.py: calculate the fisher matrix for input time domain signal
+  ╚══ snr_class.py: calculate the snr for input time domain signals
+
 ## Tutorial
 
 - An example tutorial of how to use TiDoFM is given in [**TiDoFM_tutorial.ipynb**](https://github.com/IrisLi135/TiDoFM/blob/main/TiDoFM_tutorial.ipynb).
