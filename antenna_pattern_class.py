@@ -11,9 +11,9 @@ class AntennaPattern:
     
     >>> from antenna_pattern_class import AntennaPattern
     >>> # Define source and detector parameters
-    >>> source_params = {'ra': 0.5, 'dec': 0.3, 'pol': 0.0}
-    >>> detector_params = {'Det': 'ET_1_10km_cryo'}
-    >>> GPST = 1234567890.0
+    >>> source_params = {'ra': 2.16, 'dec': -0.4, 'pol': 0.0}
+    >>> detector_params = {'Det': 'ET_1'}
+    >>> GPST = 1187008882.4
     >>> # Initialize the class
     >>> ap = AntennaPattern(source_params, detector_params, GPST)
     >>> # Calculate the antenna pattern
@@ -30,23 +30,23 @@ class AntennaPattern:
         :type source_params: dict
         :param detector_params: A dictionary that contains the detector parameters. The key is 'Det', and the value is a string that represents the detector name.
         :type detector_params: dict
-        :param Default_source_params: {'ra': 0.27, 'dec': 0.31, 'pol': 0.0}. 
+        :param Default_source_params: {'ra': 2.16, 'dec': -0.4, 'pol': 0.0}. 
         :type Default_source_params: dict
-        :param Default_detector_params: {'Det':'ET_1_10km_cryo'} 
+        :param Default_detector_params: {'Det':'ET_1'} 
         :type Default_detector_params: dict
         :param GPST: The GPS time in seconds.
         :type GPST: float
         :raises ValueError: If a given detector name is not in the list.
         '''
-        self.ra = source_params.get('ra',0.27)
-        self.dec = source_params.get('dec', 0.31)
+        self.ra = source_params.get('ra',2.16)
+        self.dec = source_params.get('dec', -0.4)
         self.pol = source_params.get('pol', 0.0)
-        self.Det = detector_params.get('Det', 'ET_1_10km_cryo')
+        self.Det = detector_params.get('Det', 'ET_1')
         self.GPST = GPST
         self.detector_info = {
-            'ET_1_10km_cryo': np.array([43.63, 10.5, 115.27, 90.0]) * np.pi / 180,
-            'ET_2_10km_cryo': np.array([43.63, 10.5, 115.27, 90.0]) * np.pi / 180,
-            'ET_3_10km_cryo': np.array([43.63, 10.5, 115.27, 90.0]) * np.pi / 180,}
+            'ET_1': np.array([43.63, 10.5, 115.27, 90.0]) * np.pi / 180,
+            'ET_2': np.array([43.63, 10.5, 115.27, 90.0]) * np.pi / 180,
+            'ET_3': np.array([43.63, 10.5, 115.27, 90.0]) * np.pi / 180,}
         if self.Det not in self.detector_info:
             raise ValueError("Invalid detector name.")
             
@@ -107,8 +107,8 @@ class AntennaPattern:
 
         :Example: 
 
-        >>> ap = AntennaPattern({'ra':0.27, 'dec':0.31, 'pol':0.0},
-                            {'Det':'ET_1_10km_cryo'}, 1254355500.0)
+        >>> ap = AntennaPattern({'ra':2.16, 'dec':-0.4, 'pol':0.0},
+                            {'Det':'ET_1'}, 1187008882.4)
         >>> ap.rotation_matrix('x', 0.5)
         [[1.0, 0.0, 0.0],
          [0.0, 0.8775825618903728, 0.479425538604203],

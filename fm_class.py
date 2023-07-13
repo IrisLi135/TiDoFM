@@ -168,9 +168,9 @@ class FisherMatrix:
         :type x: str
         '''
         return {
-                'ET_1_10km_cryo': np.array([40.31, 9.25, 243.0, 90.0])*np.pi/180,
-                'ET_2_10km_cryo': np.array([40.31, 9.25, 243.0, 90.0])*np.pi/180,
-                'ET_3_10km_cryo': np.array([40.31, 9.25, 243.0, 90.0])*np.pi/180,
+                'ET_1': np.array([40.31, 9.25, 243.0, 90.0])*np.pi/180,
+                'ET_2': np.array([40.31, 9.25, 243.0, 90.0])*np.pi/180,
+                'ET_3': np.array([40.31, 9.25, 243.0, 90.0])*np.pi/180,
             }[x]
 
     def readnos(self, f_points):
@@ -184,9 +184,9 @@ class FisherMatrix:
         '''
         def ASDtxt(x):
             return {
-                'ET_1_10km_cryo': 'ASD/ET_D.txt',
-                'ET_2_10km_cryo': 'ASD/ET_D.txt',
-                'ET_3_10km_cryo': 'ASD/ET_D.txt',
+                'ET_1': 'ASD/ET_D.txt',
+                'ET_2': 'ASD/ET_D.txt',
+                'ET_3': 'ASD/ET_D.txt',
             }[x]
 
         nos_file = ASDtxt(self.Det)
@@ -296,8 +296,8 @@ class FisherMatrix:
             else:
                 down_sample_factor = math.floor(self.sample_rate/(10*f_cut_end))
             ## read noise
-            noise_psd = self.readnos(f_series)
-            ASD = np.sqrt(noise_psd[f_start_index : f_end_index])
+            noise_asd = self.readnos(f_series)
+            ASD = noise_asd[f_start_index : f_end_index]
 
             ## calculate the GPST of the segment and the antenna pattern
             GPST_piece = GPSTinitial + segment['start_time']

@@ -16,9 +16,9 @@ class SNRCalculator:
 
     >>> from snr_class import SNRCalculator
     >>> # Define source and detector parameters
-    >>> source_params = {'Mtot': 2.8*SNRCalculator.MSUN, 'eta': 0.25, 'ra': 0.27, 'dec': 0.31, 'pol': 0.0, 'iota': 0.78}
-    >>> detector_params = {'Det': 'ET_1_10km_cryo'}
-    >>> GPST = 1234567890.0
+    >>> source_params = {'Mtot': 2.73*SNRCalculator.MSUN, 'eta': 0.249, 'ra': 2.16, 'dec': -0.4, 'pol': 0.0, 'iota': 0.34}
+    >>> detector_params = {'Det': 'ET_1'}
+    >>> GPST = 1187008882.4
     >>> # Initialize the class
     >>> snr = SNRCalculator(sample_rate = 4096, segment_size = 100, GPST = GPST, source_params = source_params, detector_params = detector_params)
     >>> # generate the tested gravitational wave signal
@@ -55,20 +55,20 @@ class SNRCalculator:
         :param detector_params: A dictionary of parameters describing the gravitational wave detector used to collect the data.
                             - ``Det``: The name of the gravitational wave detector used to collect the data.
         :type detector_params: dict
-        :param Default_source_params: {'Mtot': 2.8*SNRCalculator.MSUN, 'eta': 0.25, 'ra': 0.27, 'dec': 0.31, 'pol': 0.0, 'iota': 0.78}
+        :param Default_source_params: {'Mtot': 2.73*SNRCalculator.MSUN, 'eta': 0.249, 'ra': 2.16, 'dec': -0.4, 'pol': 0.0, 'iota': 0.34}
         :type Default_source_params: dict
-        :param Default_detector_params: {'Det': 'ET_1_10km_cryo'}
+        :param Default_detector_params: {'Det': 'ET_1'}
         :type Default_detector_params: dict
         '''
         self.sample_rate = sample_rate
         self.segment_size = segment_size
-        self.Mtot = source_params.get('Mtot',2.8*SNRCalculator.MSUN)
-        self.eta = source_params.get('eta', 0.25)
-        self.ra = source_params.get('ra',0.27)
-        self.dec = source_params.get('dec', 0.31)
+        self.Mtot = source_params.get('Mtot',2.73*SNRCalculator.MSUN)
+        self.eta = source_params.get('eta', 0.249)
+        self.ra = source_params.get('ra',2.16)
+        self.dec = source_params.get('dec', -0.4)
         self.pol = source_params.get('pol', 0.0)
-        self.iota = source_params.get('iota', 0.78)
-        self.Det = detector_params.get('Det', 'ET_1_10km_cryo')
+        self.iota = source_params.get('iota', 0.34)
+        self.Det = detector_params.get('Det', 'ET_1')
         self.GPST = GPST
 
 
@@ -164,9 +164,9 @@ class SNRCalculator:
         :type x: str
         '''
         return {
-                'ET_1_10km_cryo': np.array([43.63, 10.5, 115.27, 90.0])*np.pi/180,
-                'ET_2_10km_cryo': np.array([43.63, 10.5, 115.27, 90.0])*np.pi/180,
-                'ET_3_10km_cryo': np.array([43.63, 10.5, 115.27, 90.0])*np.pi/180,
+                'ET_1': np.array([43.63, 10.5, 115.27, 90.0])*np.pi/180,
+                'ET_2': np.array([43.63, 10.5, 115.27, 90.0])*np.pi/180,
+                'ET_3': np.array([43.63, 10.5, 115.27, 90.0])*np.pi/180,
             }[x]
 
     def readnos(self, f_points):
@@ -180,9 +180,9 @@ class SNRCalculator:
         '''
         def ASDtxt(x):
             return {
-                'ET_1_10km_cryo': 'ASD/ET_D.txt',
-                'ET_2_10km_cryo': 'ASD/ET_D.txt',
-                'ET_3_10km_cryo': 'ASD/ET_D.txt',
+                'ET_1': 'ASD/ET_D.txt',
+                'ET_2': 'ASD/ET_D.txt',
+                'ET_3': 'ASD/ET_D.txt',
             }[x]
 
         nos_file = ASDtxt(self.Det)
@@ -290,8 +290,8 @@ class SNRCalculator:
                 down_sample_factor = math.floor(self.sample_rate/(10*f_cut_end))
 
             ## read noise
-            noise_psd = self.readnos(f_series)
-            PSD = noise_psd[f_start_index : f_end_index]**2
+            noise_asd = self.readnos(f_series)
+            PSD = noise_asd[f_start_index : f_end_index]**2
 
             ## calculate the GPST of the segment and the antenna pattern
             GPST_piece = GPSTinitial + segment['start_time']
